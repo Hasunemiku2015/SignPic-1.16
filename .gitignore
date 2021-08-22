@@ -1,0 +1,13 @@
+build/
+.classpath
+.project
+.gradle/
+eclipse/
+bin/
+repo/
+run/
+.settings/
+
+.vscode/
+gradle.properties
+settings.gradle
