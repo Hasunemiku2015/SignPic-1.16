@@ -91,7 +91,7 @@ public class RenderEvent {
       //0.499 not 0.5 to avoid culling
       default:
       case 0: {
-        double wallSignOffset = info.isWallSign ? 0.499 : 0;
+        double wallSignOffset = info.isWallSign ? 0.495 : 0;
 
         // South, Vertical
         buffer.pos(-info.width / 2.0 + (info.x + 0.5) + info.offsetW, -info.height / 2.0 + (info.y + 0.5) + info.offsetH, (info.z + 0.5 + wallSignOffset)).tex(1.0F, 1.0F).endVertex();

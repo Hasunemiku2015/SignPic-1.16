@@ -25,7 +25,7 @@ public class App {
     public static final String MODID = "signpic";
     public static final KeyBinding toggleSignPic = new KeyBinding(I18n.format("signpic.key.toggle"), GLFW.GLFW_KEY_V,
             I18n.format("key.categories.signpic"));
-    public static final KeyBinding helpSignPic = new KeyBinding(I18n.format("signpic.key.help"), GLFW.GLFW_KEY_Y,
+    public static final KeyBinding helpSignPic = new KeyBinding(I18n.format("signpic.key.help"), GLFW.GLFW_KEY_F12,
             I18n.format("key.categories.signpic"));
 
     public App() {

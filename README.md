@@ -16,10 +16,10 @@ which allows images from the internet to be rendered in world through a Sign.
 >- To create a SignPicture, unlike how you did in 1.12, you will need to type the sign yourself.
 >- All 4 lines in the sign are treated as a single command, and all line separators are ignored.
 >- The syntax for the sign is `#<link>{<Image Width>x<Image Height>, <Width Offset>x<Height Offset>}`.
->- The link is without the HTTP or HTTPS prefix. If you need to use HTTPS, add a $ after #.
+>- The link should be a direct link to the image without the HTTP or HTTPS prefix. If you need to use HTTPS, add a $ after #.
 >- If you place a standing sign that needs to display vertically, add ‘R’ after Height Offset.
 >- Finally, if signs are not updating, try placing another sign first.
->- Feel free to experiment with the mod, and have fun using it!.
+>- Feel free to experiment with the mod, and have fun using it!
 
 ## FAQ
 - Is this mod Client Side? Yes
