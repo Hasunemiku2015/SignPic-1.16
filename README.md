@@ -10,7 +10,7 @@ which allows images from the internet to be rendered in world through a Sign.
 - This mod (should ?) support all types of signs and wall-sign since Minecraft introduced other types of Signs in 1.13.
 
 ## How to use
-- The same guide could be found pressing the "info.signpic.help" key (Default: Y) in game.
+- The same guide could be found pressing the "info.signpic.help" key (Default: F12) in game.
 
 >- This mod provides a way for images from the internet to be displayed in the world.
 >- To create a SignPicture, unlike how you did in 1.12, you will need to type the sign yourself.
