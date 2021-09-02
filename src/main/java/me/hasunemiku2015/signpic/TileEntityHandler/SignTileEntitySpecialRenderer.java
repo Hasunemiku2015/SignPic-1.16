@@ -49,9 +49,13 @@ public class SignTileEntitySpecialRenderer extends SignTileEntityRenderer {
       return;
     }
 
-    String lines = String.join("", tileEntityIn.getText(0).getString(), tileEntityIn.getText(1).getString(),
-        tileEntityIn.getText(2).getString(), tileEntityIn.getText(3).getString());
-    lines = lines.replace(System.lineSeparator(), "");
+    String lines;
+    try{
+      lines = String.join("", tileEntityIn.getText(0).getString(), tileEntityIn.getText(1).getString(),
+        tileEntityIn.getText(2).getString(), tileEntityIn.getText(3).getString()).replace(System.lineSeparator(), "");
+    } catch (Exception ex) {
+      return;
+    }
 
     // If not SignPicture Sign use Normal Renderer
     if(!(lines.startsWith("#") && lines.contains("{") && lines.endsWith("}") )){
