@@ -20,7 +20,7 @@ public class ModController {
 
   @SubscribeEvent
   public void onKeyPress(KeyInputEvent event) {
-    if (App.toggleSignPic.isPressed()){
+    if (event.getKey() == App.helpSignPic.getKey().getKeyCode()){
       isEnabled = !isEnabled;
 
       if(isEnabled)
