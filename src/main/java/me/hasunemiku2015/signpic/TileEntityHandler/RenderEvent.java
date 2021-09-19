@@ -102,7 +102,7 @@ public class RenderEvent {
       }
 
       case 1: {
-        double wallSignOffset = info.isWallSign ? -0.499 : 0;
+        double wallSignOffset = info.isWallSign ? -0.495 : 0;
 
         // North, Vertical
         buffer.pos( info.width / 2.0 + (info.x + 0.5) + info.offsetW, -info.height / 2.0 + (info.y + 0.5) + info.offsetH, (info.z + 0.5 + wallSignOffset)).tex(1.0F, 1.0F).endVertex();
@@ -113,7 +113,7 @@ public class RenderEvent {
       }
 
       case 2: {
-        double wallSignOffset = info.isWallSign ? 0.499 : 0;
+        double wallSignOffset = info.isWallSign ? 0.495 : 0;
 
         // East, Verical
         buffer.pos((info.x + 0.5 + wallSignOffset), -info.height / 2.0 + (info.y + 0.5) + info.offsetH,  info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(1.0F, 1.0F).endVertex();
@@ -124,7 +124,7 @@ public class RenderEvent {
       }
 
       case 3: {
-        double wallSignOffset = info.isWallSign ? -0.499 : 0;
+        double wallSignOffset = info.isWallSign ? -0.495 : 0;
 
         // West, Vertical
         buffer.pos((info.x + 0.5 + wallSignOffset), -info.height / 2.0 + (info.y + 0.5) + info.offsetH, -info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(1.0F, 1.0F).endVertex();
