@@ -1,5 +1,7 @@
 package me.hasunemiku2015.signpic.TileEntityHandler;
 
+import java.util.HashMap;
+
 import me.hasunemiku2015.signpic.App;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -23,8 +25,14 @@ public class ModController {
 
       if(isEnabled)
         mc.player.sendStatusMessage(new TranslationTextComponent("info.signpic.enable"), true);
-      else
+      else {
+        //Remove Frame Buffer when disabling
+        RenderEvent.renderInfoMap = new HashMap<>();
+        RenderEvent.textureMap = new HashMap<>();
+
         mc.player.sendStatusMessage(new TranslationTextComponent("info.signpic.disable"), true);
+      }
+
     }
   }
 }

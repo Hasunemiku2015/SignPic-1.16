@@ -26,8 +26,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 @OnlyIn(Dist.CLIENT)
 public class RenderEvent {
   static Minecraft mc = Minecraft.getInstance();
-  static HashMap<BlockPos, RenderInfo> renderInfoMap = new HashMap<>();
-  static HashMap<String, DynamicTexture> textureMap = new HashMap<>();
+  protected static HashMap<BlockPos, RenderInfo> renderInfoMap = new HashMap<>();
+  protected static HashMap<String, DynamicTexture> textureMap = new HashMap<>();
 
   /**
    * This event draws the image itself
