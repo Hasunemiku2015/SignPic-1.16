@@ -72,7 +72,13 @@ public class SignTileEntitySpecialRenderer extends SignTileEntityRenderer {
     String link = var[0];
     String dimInfo = var[1].replace("}", "");
 
-    double[] dimArr = parseDimensions(dimInfo);
+    double[] dimArr;
+    try{
+       dimArr = parseDimensions(dimInfo);
+    } catch (Exception ex){
+      super.render(tileEntityIn, partialTicks, matrixStackIn, bufferIn, combinedLightIn, combinedOverlayIn);
+      return;
+    }
 
     //No need to create new Object if sign is already created
     if (RenderEvent.renderInfoMap.containsKey(tileEntityIn.getPos())) return;
