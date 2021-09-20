@@ -17,8 +17,10 @@ public class HelpKeybindListener {
 
   @SubscribeEvent
   public void onKeyPress(KeyInputEvent event){
-    if(event.getKey() == App.helpSignPic.getKey().getKeyCode()){
-      mc.player.sendStatusMessage(new TranslationTextComponent("info.signpic.help"), false);
+    if(mc.currentScreen == null){
+      if(App.helpSignPic.isPressed()){
+        mc.player.sendStatusMessage(new TranslationTextComponent("info.signpic.help"), false);
+      }
     }
   }
 }

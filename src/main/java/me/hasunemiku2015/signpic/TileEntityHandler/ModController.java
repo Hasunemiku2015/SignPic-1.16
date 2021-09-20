@@ -20,19 +20,20 @@ public class ModController {
 
   @SubscribeEvent
   public void onKeyPress(KeyInputEvent event) {
-    if (event.getKey() == App.helpSignPic.getKey().getKeyCode()){
+    if(mc.currentScreen != null) return;
+
+    if (App.toggleSignPic.isPressed()){
       isEnabled = !isEnabled;
 
-      if(isEnabled)
+      if(isEnabled){
         mc.player.sendStatusMessage(new TranslationTextComponent("info.signpic.enable"), true);
-      else {
+      } else {
         //Remove Frame Buffer when disabling
         RenderEvent.renderInfoMap = new HashMap<>();
         RenderEvent.textureMap = new HashMap<>();
 
         mc.player.sendStatusMessage(new TranslationTextComponent("info.signpic.disable"), true);
       }
-
     }
   }
 }
