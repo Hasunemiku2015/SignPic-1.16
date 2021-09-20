@@ -88,10 +88,10 @@ public class RenderEvent {
    */
   private void renderWithState(BufferBuilder buffer, RenderInfo info) {
     switch (info.state) {
-      //0.499 not 0.5 to avoid culling
+      //0.45 not 0.5 to avoid culling
       default:
       case 0: {
-        double wallSignOffset = info.isWallSign ? 0.49 : 0;
+        double wallSignOffset = info.isWallSign ? 0.45 : 0;
 
         // South, Vertical
         buffer.pos(-info.width / 2.0 + (info.x + 0.5) + info.offsetW, -info.height / 2.0 + (info.y + 0.5) + info.offsetH, (info.z + 0.5 + wallSignOffset)).tex(1.0F, 1.0F).endVertex();
@@ -102,7 +102,7 @@ public class RenderEvent {
       }
 
       case 1: {
-        double wallSignOffset = info.isWallSign ? -0.49 : 0;
+        double wallSignOffset = info.isWallSign ? -0.45 : 0;
 
         // North, Vertical
         buffer.pos( info.width / 2.0 + (info.x + 0.5) + info.offsetW, -info.height / 2.0 + (info.y + 0.5) + info.offsetH, (info.z + 0.5 + wallSignOffset)).tex(1.0F, 1.0F).endVertex();
@@ -113,7 +113,7 @@ public class RenderEvent {
       }
 
       case 2: {
-        double wallSignOffset = info.isWallSign ? 0.49 : 0;
+        double wallSignOffset = info.isWallSign ? 0.45 : 0;
 
         // East, Verical
         buffer.pos((info.x + 0.5 + wallSignOffset), -info.height / 2.0 + (info.y + 0.5) + info.offsetH,  info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(1.0F, 1.0F).endVertex();
@@ -124,7 +124,7 @@ public class RenderEvent {
       }
 
       case 3: {
-        double wallSignOffset = info.isWallSign ? -0.49 : 0;
+        double wallSignOffset = info.isWallSign ? -0.45 : 0;
 
         // West, Vertical
         buffer.pos((info.x + 0.5 + wallSignOffset), -info.height / 2.0 + (info.y + 0.5) + info.offsetH, -info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(1.0F, 1.0F).endVertex();
@@ -137,37 +137,37 @@ public class RenderEvent {
       //Added 0.01 to y (arbitary minimal amount) to avoid culling.
       case 4: {
         // North, Horizontal
-        buffer.pos(-info.width / 2.0 + (info.x + 0.5) + info.offsetW, (info.y + 0.01),-info.height / 2.0 + (info.z + 0.5) + info.offsetH).tex(0.0F, 0.0F).endVertex();
-        buffer.pos(-info.width / 2.0 + (info.x + 0.5) + info.offsetW, (info.y + 0.01), info.height / 2.0 + (info.z + 0.5) + info.offsetH).tex(0.0F, 1.0F).endVertex();
-        buffer.pos( info.width / 2.0 + (info.x + 0.5) + info.offsetW, (info.y + 0.01), info.height / 2.0 + (info.z + 0.5) + info.offsetH).tex(1.0F, 1.0F).endVertex();
-        buffer.pos( info.width / 2.0 + (info.x + 0.5) + info.offsetW, (info.y + 0.01),-info.height / 2.0 + (info.z + 0.5) + info.offsetH).tex(1.0F, 0.0F).endVertex();
+        buffer.pos(-info.width / 2.0 + (info.x + 0.5) + info.offsetW, (info.y + 0.1),-info.height / 2.0 + (info.z + 0.5) + info.offsetH).tex(0.0F, 0.0F).endVertex();
+        buffer.pos(-info.width / 2.0 + (info.x + 0.5) + info.offsetW, (info.y + 0.1), info.height / 2.0 + (info.z + 0.5) + info.offsetH).tex(0.0F, 1.0F).endVertex();
+        buffer.pos( info.width / 2.0 + (info.x + 0.5) + info.offsetW, (info.y + 0.1), info.height / 2.0 + (info.z + 0.5) + info.offsetH).tex(1.0F, 1.0F).endVertex();
+        buffer.pos( info.width / 2.0 + (info.x + 0.5) + info.offsetW, (info.y + 0.1),-info.height / 2.0 + (info.z + 0.5) + info.offsetH).tex(1.0F, 0.0F).endVertex();
         return;
       }
 
       case 5: {
         // East, Horizontal
-        buffer.pos( info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.01), info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(1.0F, 0.0F).endVertex();
-        buffer.pos( info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.01),-info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(0.0F, 0.0F).endVertex();
-        buffer.pos(-info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.01),-info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(0.0F, 1.0F).endVertex();
-        buffer.pos(-info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.01), info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(1.0F, 1.0F).endVertex();
+        buffer.pos( info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.1), info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(1.0F, 0.0F).endVertex();
+        buffer.pos( info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.1),-info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(0.0F, 0.0F).endVertex();
+        buffer.pos(-info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.1),-info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(0.0F, 1.0F).endVertex();
+        buffer.pos(-info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.1), info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(1.0F, 1.0F).endVertex();
         return;
       }
 
       case 6: {
         // South, Horizontal
-        buffer.pos(-info.width / 2.0 + (info.x + 0.5) + info.offsetW, (info.y + 0.01),-info.height / 2.0 + (info.z + 0.5) + info.offsetH).tex(1.0F, 1.0F).endVertex();
-        buffer.pos(-info.width / 2.0 + (info.x + 0.5) + info.offsetW, (info.y + 0.01), info.height / 2.0 + (info.z + 0.5) + info.offsetH).tex(1.0F, 0.0F).endVertex();
-        buffer.pos( info.width / 2.0 + (info.x + 0.5) + info.offsetW, (info.y + 0.01), info.height / 2.0 + (info.z + 0.5) + info.offsetH).tex(0.0F, 0.0F).endVertex();
-        buffer.pos( info.width / 2.0 + (info.x + 0.5) + info.offsetW, (info.y + 0.01),-info.height / 2.0 + (info.z + 0.5) + info.offsetH).tex(0.0F, 1.0F).endVertex();
+        buffer.pos(-info.width / 2.0 + (info.x + 0.5) + info.offsetW, (info.y + 0.1),-info.height / 2.0 + (info.z + 0.5) + info.offsetH).tex(1.0F, 1.0F).endVertex();
+        buffer.pos(-info.width / 2.0 + (info.x + 0.5) + info.offsetW, (info.y + 0.1), info.height / 2.0 + (info.z + 0.5) + info.offsetH).tex(1.0F, 0.0F).endVertex();
+        buffer.pos( info.width / 2.0 + (info.x + 0.5) + info.offsetW, (info.y + 0.1), info.height / 2.0 + (info.z + 0.5) + info.offsetH).tex(0.0F, 0.0F).endVertex();
+        buffer.pos( info.width / 2.0 + (info.x + 0.5) + info.offsetW, (info.y + 0.1),-info.height / 2.0 + (info.z + 0.5) + info.offsetH).tex(0.0F, 1.0F).endVertex();
         return;
       }
 
       case 7: {
         // West, Horizontal
-        buffer.pos( info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.01), info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(0.0F, 1.0F).endVertex();
-        buffer.pos( info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.01),-info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(1.0F, 1.0F).endVertex();
-        buffer.pos(-info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.01),-info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(1.0F, 0.0F).endVertex();
-        buffer.pos(-info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.01), info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(0.0F, 0.0F).endVertex();
+        buffer.pos( info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.1), info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(0.0F, 1.0F).endVertex();
+        buffer.pos( info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.1),-info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(1.0F, 1.0F).endVertex();
+        buffer.pos(-info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.1),-info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(1.0F, 0.0F).endVertex();
+        buffer.pos(-info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.1), info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(0.0F, 0.0F).endVertex();
         return;
       }
     }
