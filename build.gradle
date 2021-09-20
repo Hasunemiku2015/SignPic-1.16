@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 
 group = 'me.hasunemiku2015'
-version = '1.0'
+version = '1.1'
 
 java {
     archivesBaseName = 'signpic'
