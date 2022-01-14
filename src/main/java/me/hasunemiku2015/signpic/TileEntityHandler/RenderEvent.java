@@ -3,6 +3,7 @@ package me.hasunemiku2015.signpic.TileEntityHandler;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.platform.GlStateManager;
@@ -45,19 +46,18 @@ public class RenderEvent {
     for (RenderInfo info : renderInfoMap.values()) {
       if(!textureMap.containsKey(info.texture)) continue;
 
+      assert mc.player != null;
+      //Add non-sign block textures to removable list, remove from removable list if still needed
       if (Math
           .sqrt(Math.pow((info.x - mc.player.getPosX()), 2)
               + Math.pow((info.z - mc.player.getPosZ()), 2)) > renderDistance * 16
-          || !(mc.world.getBlockState(new BlockPos(info.x, info.y, info.z)).getBlock() instanceof AbstractSignBlock)) {
-
+          || !(Objects.requireNonNull(mc.world).getBlockState(new BlockPos(info.x, info.y, info.z))
+              .getBlock() instanceof AbstractSignBlock)) {
         renderInfoMap.values().remove(info);
         deadKeys.add(info.texture);
-        return;
+        continue;
       }
-
-      if(deadKeys.contains(info.texture)){
-        deadKeys.remove(info.texture);
-      }
+      deadKeys.remove(info.texture);
 
       stack.push();
       stack.translate(-projView.x, -projView.y, -projView.z);
@@ -71,7 +71,7 @@ public class RenderEvent {
       renderWithState(buffer, info);
       Tessellator.getInstance().draw();
 
-      // Fixes the hand problem (So only the tessellator got multiplied)
+      // Fixes the hand problem (So only the Tessellator got multiplied)
       matrix.invert();
       GlStateManager.multMatrix(matrix);
       stack.pop();
@@ -115,7 +115,7 @@ public class RenderEvent {
       case 2: {
         double wallSignOffset = info.isWallSign ? 0.45 : 0;
 
-        // East, Verical
+        // East, Vertical
         buffer.pos((info.x + 0.5 + wallSignOffset), -info.height / 2.0 + (info.y + 0.5) + info.offsetH,  info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(1.0F, 1.0F).endVertex();
         buffer.pos((info.x + 0.5 + wallSignOffset),  info.height / 2.0 + (info.y + 0.5) + info.offsetH,  info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(1.0F, 0.0F).endVertex();
         buffer.pos((info.x + 0.5 + wallSignOffset),  info.height / 2.0 + (info.y + 0.5) + info.offsetH, -info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(0.0F, 0.0F).endVertex();
@@ -134,7 +134,7 @@ public class RenderEvent {
         return;
       }
 
-      //Added 0.01 to y (arbitary minimal amount) to avoid culling.
+      //Added 0.1 to y to avoid culling.
       case 4: {
         // North, Horizontal
         buffer.pos(-info.width / 2.0 + (info.x + 0.5) + info.offsetW, (info.y + 0.1),-info.height / 2.0 + (info.z + 0.5) + info.offsetH).tex(0.0F, 0.0F).endVertex();
@@ -168,7 +168,6 @@ public class RenderEvent {
         buffer.pos( info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.1),-info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(1.0F, 1.0F).endVertex();
         buffer.pos(-info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.1),-info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(1.0F, 0.0F).endVertex();
         buffer.pos(-info.height / 2.0 + (info.x + 0.5) + info.offsetH, (info.y + 0.1), info.width / 2.0 + (info.z + 0.5) + info.offsetW).tex(0.0F, 0.0F).endVertex();
-        return;
       }
     }
   }

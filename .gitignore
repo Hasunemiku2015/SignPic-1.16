@@ -8,6 +8,6 @@ repo/
 run/
 .settings/
 
-.vscode/
+.idea/
 gradle.properties
 settings.gradle

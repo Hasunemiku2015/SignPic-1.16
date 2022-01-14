@@ -39,8 +39,7 @@ public class App {
         MinecraftForge.EVENT_BUS.register(new RenderEvent());
         MinecraftForge.EVENT_BUS.register(new HelpKeybindListener());
 
-        ClientRegistry.bindTileEntityRenderer(TileEntityType.SIGN,
-                (TileEntityRendererDispatcher t) -> new SignTileEntitySpecialRenderer(t));
+        ClientRegistry.bindTileEntityRenderer(TileEntityType.SIGN, SignTileEntitySpecialRenderer::new);
         ClientRegistry.registerKeyBinding(toggleSignPic);
         ClientRegistry.registerKeyBinding(helpSignPic);
     }

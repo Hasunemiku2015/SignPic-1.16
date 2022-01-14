@@ -19,6 +19,7 @@ public class HelpKeybindListener {
   public void onKeyPress(KeyInputEvent event){
     if(mc.currentScreen == null){
       if(App.helpSignPic.isPressed()){
+        //noinspection ConstantConditions
         mc.player.sendStatusMessage(new TranslationTextComponent("info.signpic.help"), false);
       }
     }

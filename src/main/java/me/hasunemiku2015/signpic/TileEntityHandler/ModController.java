@@ -26,12 +26,14 @@ public class ModController {
       isEnabled = !isEnabled;
 
       if(isEnabled){
+        //noinspection ConstantConditions
         mc.player.sendStatusMessage(new TranslationTextComponent("info.signpic.enable"), true);
       } else {
         //Remove Frame Buffer when disabling
         RenderEvent.renderInfoMap = new HashMap<>();
         RenderEvent.textureMap = new HashMap<>();
 
+        //noinspection ConstantConditions
         mc.player.sendStatusMessage(new TranslationTextComponent("info.signpic.disable"), true);
       }
     }
