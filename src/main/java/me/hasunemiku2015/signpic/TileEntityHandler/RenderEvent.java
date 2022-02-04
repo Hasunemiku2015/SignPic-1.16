@@ -8,6 +8,7 @@ import java.util.Objects;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.platform.GlStateManager;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.block.AbstractSignBlock;
@@ -29,7 +30,6 @@ public class RenderEvent {
   static Minecraft mc = Minecraft.getInstance();
   protected static HashMap<BlockPos, RenderInfo> renderInfoMap = new HashMap<>();
   protected static HashMap<String, DynamicTexture> textureMap = new HashMap<>();
-
   /**
    * This event draws the image itself
    */
@@ -65,6 +65,8 @@ public class RenderEvent {
       GlStateManager.multMatrix(matrix);
 
       textureMap.get(info.texture).bindTexture();
+      RenderSystem.enableBlend();
+      RenderSystem.defaultBlendFunc();
 
       BufferBuilder buffer = Tessellator.getInstance().getBuffer();
       buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
@@ -75,6 +77,7 @@ public class RenderEvent {
       matrix.invert();
       GlStateManager.multMatrix(matrix);
       stack.pop();
+      RenderSystem.disableBlend();
     }
 
     for(String key: deadKeys)
