@@ -23,7 +23,7 @@ which allows images from the internet to be rendered in world through a Sign.
 
 ## FAQ
 - Is this mod Client Side? Yes
-- Will you be porting it to 1.17 or above? Depends on the reaction and demand of this mod, but very possible.
+- Will you be porting it to 1.17 or above? Yes and Miku already the mod updated to 1.18.1.
 - Why do I need to type the Sign myself? Miku dont know how to code a GUI/GUI-related stuff.
 - How to contribute? Fork this repository and send in a pull request.
 - License? MIT License.
